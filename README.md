@@ -18,18 +18,24 @@ app-backend
 │  │  │  ├─ otp-controller.ts
 │  │  │  ├─ password-reset-controller.ts
 │  │  │  ├─ resend-otp-controller.ts
-│  │  │  └─ signup-controller.ts
+│  │  │  ├─ signup-controller.ts
+│  │  │  └─ verifyOtp.controller.ts
 │  │  ├─ order-controller
 │  │  │  ├─ create-order.controller.ts
 │  │  │  ├─ get-my-orders.controller.ts
 │  │  │  └─ update-order-status.controller.ts
+│  │  ├─ restaurant-controller
+│  │  │  ├─ create-restaurant.controller.ts
+│  │  │  ├─ get-restaurants.controller.ts
+│  │  │  └─ update-restaurant.controller.ts
 │  │  └─ user.controller.ts
 │  ├─ error.ts
 │  ├─ express.d.ts
 │  ├─ main.ts
 │  ├─ middleware
 │  │  ├─ auth.middleware.ts
-│  │  └─ role.middleware.ts
+│  │  ├─ role.middleware.ts
+│  │  └─ upload.middleware.ts
 │  ├─ models
 │  │  ├─ MenuItem.model.ts
 │  │  ├─ Order.model.ts
@@ -39,7 +45,8 @@ app-backend
 │  │  └─ User.model.ts
 │  ├─ routes
 │  │  ├─ auth.routes.ts
-│  │  └─ order.routes.ts
+│  │  ├─ order.routes.ts
+│  │  └─ restaurant.routes.ts
 │  ├─ services
 │  │  ├─ authUser.service.ts
 │  │  ├─ otp.service.ts
@@ -62,6 +69,8 @@ app-backend
 │           ├─ passwordResetOtpMail.ts
 │           └─ WelcomeMail.ts
 ├─ tsconfig.json
+├─ uploads
+│  └─ image.png
 └─ yarn.lock
 
 ```
