@@ -81,6 +81,7 @@ export function createAuthRoutes(app: Express) {
   // Password reset
   app.post("/api/auth/request-password-reset", requestPasswordResetController);
   app.post("/api/auth/reset-password", resetPasswordController);
+  
 }
 
 
