@@ -47,20 +47,6 @@
 //   }
 // }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // import { Request, Response } from "express";
 // import { hash } from "bcryptjs";
 // import { UserModel, UserRole } from "../../models/User.model";
@@ -119,13 +105,6 @@
 //     res.status(500).json({ message: "Internal server error", error: error.message });
 //   }
 // }
-
-
-
-
-
-
-
 
 // import { Request, Response, NextFunction } from "express";
 // import bcrypt from "bcryptjs";
@@ -190,25 +169,6 @@
 //   }
 // };
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 import { Request, Response, NextFunction } from "express";
 import bcrypt from "bcryptjs";
 import { UserModel, UserRole } from "../../models/User.model";
@@ -232,6 +192,7 @@ export const signUpController = async (
   next: NextFunction
 ) => {
   try {
+    console.log("singup req entered");
     const { username, email, password, restaurantName, phone } = req.body;
 
     if (!username || !email || !password) {
@@ -284,26 +245,8 @@ export const signUpController = async (
       },
       requiresVerification: true,
     });
-
   } catch (error) {
     console.error("Signup error:", error);
     next(new FoodAppError("Signup failed", 500));
   }
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

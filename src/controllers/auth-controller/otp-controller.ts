@@ -65,10 +65,6 @@
 //   }
 // }
 
-
-
-
-
 import { Request, Response } from "express";
 import { createOTP, verifyOtp } from "../../services/otp.service";
 import { sendMailViaAPI } from "../../utils/mail/brevoApi";
@@ -89,30 +85,48 @@ export async function sendOtpController(req: Request, res: Response) {
 
     await sendMailViaAPI(
       email,
-      purpose === OTPPurpose.VERIFICATION ? "Your OTP Verification Code" : "Your OTP",
+      purpose === OTPPurpose.VERIFICATION
+        ? "Your OTP Verification Code"
+        : "Your OTP",
       otpMailTemplate(user.username || "User", otpDoc.otp)
     );
 
     console.log(`✅ OTP sent to ${email}:`, otpDoc.otp);
 
-    return res.status(200).json({ success: true, message: "OTP sent successfully" });
+    return res
+      .status(200)
+      .json({ success: true, message: "OTP sent successfully" });
   } catch (err: any) {
     console.error("sendOtpController error:", err);
-    res.status(500).json({ success: false, message: "Failed to send OTP", error: err.message });
+    res.status(500).json({
+      success: false,
+      message: "Failed to send OTP",
+      error: err.message,
+    });
   }
 }
 
 /** Verify OTP */
 export async function verifyOtpController(req: Request, res: Response) {
   try {
+    console.log("verifyOtpController req body:", req.body);
     const { email, otp, purpose = OTPPurpose.VERIFICATION } = req.body;
-    if (!email || !otp) return res.status(400).json({ success: false, message: "Email and OTP are required" });
+    if (!email || !otp)
+      return res
+        .status(400)
+        .json({ success: false, message: "Email and OTP are required" });
 
     const user = await userMongoService.getUserByEmail({ email });
-    if (!user) return res.status(404).json({ success: false, message: "User not found" });
+    console.log("user search", user);
+    if (!user)
+      return res
+        .status(404)
+        .json({ success: false, message: "User not found" });
 
     if (user.isVerified) {
-      return res.status(200).json({ success: true, message: "OTP already verified", user });
+      return res
+        .status(200)
+        .json({ success: true, message: "OTP already verified", user });
     }
 
     const result = await verifyOtp(email, otp, purpose);
@@ -123,10 +137,16 @@ export async function verifyOtpController(req: Request, res: Response) {
     user.isVerified = true;
     await user.save();
 
-    return res.status(200).json({ success: true, message: "OTP verified successfully", user });
+    return res
+      .status(200)
+      .json({ success: true, message: "OTP verified successfully", user });
   } catch (err: any) {
     console.error("verifyOtpController error:", err);
-    res.status(500).json({ success: false, message: "Failed to verify OTP", error: err.message });
+    res.status(500).json({
+      success: false,
+      message: "Failed to verify OTP",
+      error: err.message,
+    });
   }
 }
 
@@ -134,10 +154,16 @@ export async function verifyOtpController(req: Request, res: Response) {
 export async function resendOtpController(req: Request, res: Response) {
   try {
     const { email, purpose = OTPPurpose.VERIFICATION } = req.body;
-    if (!email) return res.status(400).json({ success: false, message: "Email is required" });
+    if (!email)
+      return res
+        .status(400)
+        .json({ success: false, message: "Email is required" });
 
     const user = await userMongoService.getUserByEmail({ email });
-    if (!user) return res.status(404).json({ success: false, message: "User not found" });
+    if (!user)
+      return res
+        .status(404)
+        .json({ success: false, message: "User not found" });
 
     const otpDoc = await createOTP({ email, purpose });
 
@@ -149,28 +175,15 @@ export async function resendOtpController(req: Request, res: Response) {
 
     console.log(`✅ Resent OTP to ${email}:`, otpDoc.otp);
 
-    return res.status(200).json({ success: true, message: "OTP resent successfully" });
+    return res
+      .status(200)
+      .json({ success: true, message: "OTP resent successfully" });
   } catch (err: any) {
     console.error("resendOtpController error:", err);
-    res.status(500).json({ success: false, message: "Failed to resend OTP", error: err.message });
+    res.status(500).json({
+      success: false,
+      message: "Failed to resend OTP",
+      error: err.message,
+    });
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

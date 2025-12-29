@@ -41,12 +41,6 @@
 //   app.post("/api/auth/reset-password", resetPasswordController);                // Uses OTPPurpose.RESET_PASSWORD
 // }
 
-
-
-
-
-
-
 import { Express } from "express";
 import { signUpController } from "../controllers/auth-controller/signup-controller";
 import { loginController } from "../controllers/auth-controller/login-contoller";
@@ -55,8 +49,8 @@ import { meController } from "../controllers/auth-controller/me-controller";
 
 import {
   sendOtpController,
-  verifyOtpController,
   resendOtpController,
+  verifyOtpController,
 } from "../controllers/auth-controller/otp-controller";
 
 import {
@@ -81,19 +75,4 @@ export function createAuthRoutes(app: Express) {
   // Password reset
   app.post("/api/auth/request-password-reset", requestPasswordResetController);
   app.post("/api/auth/reset-password", resetPasswordController);
-  
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
