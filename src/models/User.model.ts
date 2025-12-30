@@ -38,6 +38,7 @@ import { Schema, model, Document } from "mongoose";
 export enum UserRole {
   ADMIN = "ADMIN",
   CUSTOMER = "CUSTOMER",
+  // RESTAURANT_OWNER = "RESTAURANT_OWNER",
 }
 
 export interface IUser extends Document {

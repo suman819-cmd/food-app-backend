@@ -10,6 +10,8 @@ app-backend
 │  │  ├─ database.ts
 │  │  ├─ environment.ts
 │  │  └─ jwt.ts
+│  ├─ constants
+│  │  └─ order.constant.ts
 │  ├─ controllers
 │  │  ├─ auth-controller
 │  │  │  ├─ login-contoller.ts
@@ -23,6 +25,7 @@ app-backend
 │  │  ├─ order-controller
 │  │  │  ├─ create-order.controller.ts
 │  │  │  ├─ get-my-orders.controller.ts
+│  │  │  ├─ order.controller.ts
 │  │  │  └─ update-order-status.controller.ts
 │  │  ├─ restaurant-controller
 │  │  │  ├─ create-restaurant.controller.ts
@@ -49,25 +52,29 @@ app-backend
 │  │  └─ restaurant.routes.ts
 │  ├─ services
 │  │  ├─ authUser.service.ts
+│  │  ├─ order
+│  │  │  └─ order.service.ts
 │  │  ├─ otp.service.ts
 │  │  └─ token.service.ts
 │  ├─ types
 │  │  ├─ order.type.ts
 │  │  ├─ payload.type.ts
 │  │  └─ user.type.ts
-│  └─ utils
-│     ├─ apiResponse.ts
-│     ├─ asyncHandler.ts
-│     ├─ bcrypt.ts
-│     ├─ constant.ts
-│     └─ mail
-│        ├─ brevoApi.ts
-│        └─ templates
-│           ├─ orderConfirmationMail.ts
-│           ├─ otpMail.ts
-│           ├─ passwordResetMail.ts
-│           ├─ passwordResetOtpMail.ts
-│           └─ WelcomeMail.ts
+│  ├─ utils
+│  │  ├─ apiResponse.ts
+│  │  ├─ asyncHandler.ts
+│  │  ├─ bcrypt.ts
+│  │  ├─ constant.ts
+│  │  └─ mail
+│  │     ├─ brevoApi.ts
+│  │     └─ templates
+│  │        ├─ orderConfirmationMail.ts
+│  │        ├─ otpMail.ts
+│  │        ├─ passwordResetMail.ts
+│  │        ├─ passwordResetOtpMail.ts
+│  │        └─ WelcomeMail.ts
+│  └─ validators
+│     └─ order.validator.ts
 ├─ tsconfig.json
 ├─ uploads
 │  └─ image.png
