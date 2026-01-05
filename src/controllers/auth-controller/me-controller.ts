@@ -2,7 +2,10 @@
 import { Request, Response } from "express";
 import { UserModel } from "../../models/User.model";
 
-export async function meController(req: Request & { user?: { id: string } }, res: Response) {
+export async function meController(
+  req: Request & { user?: { id: string } },
+  res: Response
+) {
   try {
     const userId = req.user?.id;
     if (!userId) return res.status(401).json({ message: "Unauthorized" });
@@ -16,7 +19,7 @@ export async function meController(req: Request & { user?: { id: string } }, res
       email: user.email,
       role: user.role,
       isVerified: user.isVerified,
-      memberSince: user.memberSince,
+      // memberSince: user.memberSince,
     });
   } catch (error) {
     console.error("Error in meController:", error);

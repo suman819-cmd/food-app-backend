@@ -26,19 +26,12 @@
 //   return payload as TPayload;
 // }
 
-
-
-
-
-
-
-
-
 import jwt from "jsonwebtoken";
 import { config } from "./environment";
-
+const jwtSecrete = config.jwt.secret as string;
+const jwtExpire = config.jwt.expire as string;
 export const generateToken = (payload: object) => {
-  return jwt.sign(payload, config.jwt.secret, { expiresIn: config.jwt.expire });
+  return jwt.sign(payload, jwtSecrete, { expiresIn: parseInt(jwtExpire) });
 };
 
 export const verifyToken = (token: string) => {
