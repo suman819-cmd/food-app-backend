@@ -141,6 +141,7 @@ app.use(
       "http://localhost:4200",
       "http://localhost:8080",
       "http://192.168.0.102:5000/",
+      "exp://192.168.0.116:8081",
     ], // ✅ added 8080
     credentials: true,
   })
